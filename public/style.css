@@ -1,4 +1,4 @@
-/* public/style.css - ✨ Modern & Clean UI ✨ */
+/* public/style.css - Optimized for Mobile Landscape & Portrait */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
@@ -21,7 +21,7 @@
 body {
     font-family: 'Inter', sans-serif; /* Modern, readable font */
     margin: 0;
-    padding: 20px; /* Padding around the entire app */
+    padding: 20px; /* Base padding */
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
@@ -33,15 +33,16 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px; /* Increased gap for breathing room */
-    width: 95%; /* Wider container */
-    max-width: 1400px; /* Max width for large screens */
+    grid-template-columns: 2fr 1fr; /* Default desktop layout */
+    gap: 30px;
+    width: 95%;
+    max-width: 1400px;
     background-color: var(--secondary-bg);
-    border-radius: 12px; /* More rounded corners */
-    box-shadow: 0 8px 30px var(--shadow-medium); /* Deeper shadow */
-    padding: 30px; /* Increased padding inside container */
-    margin: auto; /* Center the container horizontally */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+    padding: 30px;
+    margin: auto;
+    overflow-y: auto; /* Allow scrolling if content overflows in smaller views */
 }
 
 .video-section {
@@ -55,7 +56,7 @@ body {
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     position: relative;
     background-color: #000;
-    border-radius: 8px; /* Consistent rounded corners */
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px var(--shadow-light);
 }
@@ -71,28 +72,28 @@ body {
 
 .controls {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px; /* Spacing between control elements */
+    flex-wrap: wrap; /* Allows items to wrap to next line */
+    gap: 12px;
     align-items: center;
 }
 
 .controls input[type="text"],
 .chat-input input[type="text"] {
     flex-grow: 1;
-    padding: 12px 15px; /* More padding */
+    padding: 12px 15px;
     border: 1px solid var(--border-color);
-    border-radius: 6px; /* Slightly rounded */
+    border-radius: 6px;
     background-color: var(--input-bg);
     color: var(--text-color);
     font-size: 0.95rem;
-    outline: none; /* Remove default focus outline */
+    outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .controls input[type="text"]:focus,
 .chat-input input[type="text"]:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.3); /* Subtle focus glow */
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.3);
 }
 
 .controls input::placeholder,
@@ -100,51 +101,40 @@ body {
     color: var(--placeholder-color);
 }
 
-
 .controls button,
 .chat-input button {
-    padding: 12px 20px; /* More padding */
+    padding: 12px 20px;
     background-color: var(--primary-color);
     color: var(--button-text-color);
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.95rem;
-    font-weight: 500; /* Slightly bolder text */
+    font-weight: 500;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    white-space: nowrap; /* Prevent text wrapping on buttons */
+    white-space: nowrap;
 }
 
 .controls button:hover,
 .chat-input button:hover {
     background-color: var(--primary-color-hover);
-    transform: translateY(-1px); /* Slight lift effect */
+    transform: translateY(-1px);
 }
 .controls button:active,
 .chat-input button:active {
-    transform: translateY(0); /* Press effect */
+    transform: translateY(0);
 }
-
-/* Specific button width adjustments for smaller screens if needed */
-@media (max-width: 600px) {
-    .controls #loadVideoButton,
-    .controls #playPauseButton,
-    .controls #syncButton {
-        flex-basis: 100%; /* Make buttons take full width */
-    }
-}
-
 
 .chat-section {
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-color); /* Matches body background */
-    border-radius: 10px; /* Consistent rounding */
-    padding: 20px; /* More internal padding */
-    gap: 15px; /* Spacing between chat box and input */
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 15px;
     box-shadow: 0 4px 15px var(--shadow-light);
     height: 100%; /* Ensure chat section fills grid cell */
-    min-height: 400px; /* Ensure a minimum height on desktop */
+    min-height: 400px; /* Base min-height for desktop */
 }
 
 .chat-box {
@@ -152,18 +142,17 @@ body {
     overflow-y: auto;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 15px; /* More internal padding */
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Spacing between messages */
-    /* Removed max-height here to allow flex-grow to work better */
+    gap: 10px;
 }
 
 .chat-message {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    animation: fadeIn 0.3s ease-out; /* Fade-in animation for messages */
+    animation: fadeIn 0.3s ease-out;
 }
 
 .chat-message.self {
@@ -172,78 +161,167 @@ body {
 
 .chat-bubble {
     background-color: var(--chat-bubble-bg);
-    padding: 10px 15px; /* More padding */
-    border-radius: 18px; /* More rounded, pill-like */
-    max-width: 85%; /* Slightly wider bubble */
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
     word-wrap: break-word;
     font-size: 0.9rem;
     line-height: 1.4;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Subtle bubble shadow */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .chat-message.self .chat-bubble {
     background-color: var(--chat-bubble-self-bg);
-    color: var(--button-text-color); /* White text on primary color bubble */
+    color: var(--button-text-color);
 }
 
 .message-meta {
-    font-size: 0.7rem; /* Smaller meta text */
-    color: #8b949e; /* Muted color */
+    font-size: 0.7rem;
+    color: #8b949e;
     margin-top: 4px;
-    padding: 0 8px; /* Align with bubble roughly */
+    padding: 0 8px;
 }
 
 .chat-input {
     display: flex;
     gap: 10px;
-    margin-top: auto; /* Pushes input to the bottom of the chat section */
+    margin-top: auto;
 }
 
 .chat-input #usernameInput {
-    flex: 0.7; /* Give username slightly more space */
-    max-width: 150px; /* Limit username input width */
+    flex: 0.7;
+    max-width: 150px;
 }
 .chat-input #messageInput {
     flex: 2;
 }
 
+/* ----------------------------------------------------------- */
+/* MEDIA QUERIES FOR RESPONSIVENESS          */
+/* ----------------------------------------------------------- */
 
-/* Mobile Layout */
-@media (max-width: 992px) { /* Adjust breakpoint for tablets/smaller desktops */
+/* Tablets and larger phones in landscape (e.g., 768px - 991px wide) */
+@media (min-width: 768px) and (max-width: 991px) {
     .container {
-        grid-template-columns: 1fr; /* Stack vertically */
-        padding: 20px;
-        width: 100%;
-        min-height: 100vh;
-        border-radius: 0;
-        box-shadow: none;
-        gap: 20px;
+        grid-template-columns: 1fr; /* Stack video and chat vertically */
+        gap: 25px;
+        padding: 25px;
+        width: 98%; /* Slightly wider */
     }
-
     .chat-section {
-        /* No margin-top needed if it's the next grid item */
-        min-height: 350px; /* Ensure chat box has enough height on mobile */
+        min-height: 300px; /* Ensure chat is visible */
     }
 }
 
-/* Further Mobile Adjustments for very small screens */
-@media (max-width: 576px) {
+/* Small tablets (portrait) & Large Phones (landscape) - ~577px to 767px wide */
+@media (min-width: 577px) and (max-width: 767px) {
     body {
-        padding: 10px;
-    }
-    .container {
         padding: 15px;
     }
-    .controls, .chat-input {
-        flex-direction: column;
-        gap: 8px;
+    .container {
+        grid-template-columns: 1fr; /* Always stack */
+        gap: 20px;
+        padding: 20px;
+        width: 100%; /* Use full width */
+        border-radius: 0; /* No rounded corners on container edges */
+        box-shadow: none; /* No shadow */
     }
-    .controls input, .chat-input input, .controls button, .chat-input button {
-        width: 100%; /* Make inputs and buttons full width */
-        flex-grow: 0; /* Override flex-grow for full width */
+    .chat-section {
+        min-height: 300px;
+    }
+    .controls {
+        flex-direction: column; /* Stack controls vertically */
+        align-items: stretch; /* Stretch controls to full width */
+    }
+    .controls input[type="text"],
+    .controls button {
+        width: 100%;
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+    .chat-input {
+        flex-direction: column; /* Stack chat input elements */
+    }
+    .chat-input #usernameInput,
+    .chat-input #messageInput {
+        max-width: none; /* Allow inputs to take full width */
+        width: 100%;
+    }
+}
+
+
+/* Extra Small Devices (Phones in portrait or small landscape) - up to 576px wide */
+@media (max-width: 576px) {
+    body {
+        padding: 10px; /* Less padding on body */
+    }
+    .container {
+        grid-template-columns: 1fr; /* Always stack */
+        gap: 15px; /* Reduced gap */
+        padding: 15px;
+        width: 100%;
+        min-height: 100vh; /* Ensure it takes full height */
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .chat-section {
+        min-height: 250px; /* Smaller min-height for chat on small screens */
+    }
+    .controls, .chat-input {
+        flex-direction: column; /* Stack all controls and inputs */
+        gap: 8px;
+        align-items: stretch; /* Stretch buttons/inputs to fill width */
+    }
+    .controls input, .chat-input input,
+    .controls button, .chat-input button {
+        width: 100%; /* Make them full width */
+        flex-grow: 0; /* Override flex-grow to ensure full width */
     }
     .chat-input #usernameInput, .chat-input #messageInput {
-        max-width: none; /* Remove max-width on mobile inputs */
+        max-width: none; /* Remove max-width for full flexibility */
+    }
+    /* Smaller font sizes for very small screens */
+    body {
+        font-size: 0.95rem;
+    }
+    .chat-bubble {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+    .message-meta {
+        font-size: 0.65rem;
+    }
+}
+
+/* Landscape Specific Adjustments for Phones (e.g., iPhone SE, Pixel 5 in landscape) */
+/* When height is less than width, and width is within typical phone landscape range */
+@media (max-width: 820px) and (max-height: 450px) and (orientation: landscape) {
+    .container {
+        grid-template-columns: 1fr; /* Stack vertically even in landscape */
+        padding: 10px;
+        gap: 10px;
+        min-height: auto; /* Allow container to shrink */
+    }
+    body {
+        padding: 5px;
+        align-items: center; /* Center the container vertically if it's shorter */
+    }
+    .video-section {
+        gap: 10px;
+    }
+    .chat-section {
+        min-height: 200px; /* Significantly reduce chat height to fit */
+        padding: 10px;
+    }
+    .controls, .chat-input {
+        gap: 6px;
+    }
+    .controls button, .chat-input button {
+        padding: 8px 15px; /* Smaller buttons */
+        font-size: 0.85rem;
+    }
+    .chat-bubble {
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 }
 
@@ -251,7 +329,7 @@ body {
 /* Scrollbar styling (modern look) */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
+    height: 8px; /* For horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track {
@@ -262,7 +340,7 @@ body {
 ::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 10px;
-    border: 2px solid var(--input-bg); /* Padding inside thumb */
+    border: 2px solid var(--input-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
